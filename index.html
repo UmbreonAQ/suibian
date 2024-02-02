@@ -1,62 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投票</title>
+    <title>赞颂何老师的作品</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
             text-align: center;
         }
-        .options {
-            margin-top: 20px;
+        .container {
+            margin-top: 50px;
         }
-        .option {
-            margin-bottom: 10px;
-        }
-        button {
+        #praise {
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
             cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>选择你的最爱</h1>
-    <div class="options">
-        <div class="option">
-            <input type="radio" id="option1" name="vote" value="Option 1">
-            <label for="option1">选项 1</label>
+    <div class="container">
+        <h1>赞颂何老师的作品</h1>
+        <p>点击下方按钮赞颂何老师的作品：</p>
+        <button id="praise">赞颂作品</button>
+        <div id="praiseText" style="display: none; margin-top: 20px;">
+            <!-- 这里是赞美的文本，点击按钮后会显示 -->
         </div>
-        <div class="option">
-            <input type="radio" id="option2" name="vote" value="Option 2">
-            <label for="option2">选项 2</label>
-        </div>
-        <div class="option">
-            <input type="radio" id="option3" name="vote" value="Option 3">
-            <label for="option3">选项 3</label>
-        </div>
-    </div>
-    <div class="vote-button">
-        <button onclick="submitVote()">投票</button>
     </div>
 
     <script>
-        function submitVote() {
-            var selectedOption = document.querySelector('input[name="vote"]:checked');
-            if (selectedOption) {
-                var voteValue = selectedOption.value;
-                // 在这里发送投票数据到服务器，你可以使用 AJAX 或其他方法
-                alert("你选择了：" + voteValue);
-            } else {
-                alert("请选择一个选项进行投票");
-            }
-        }
+        const praiseButton = document.getElementById('praise');
+        const praiseText = document.getElementById('praiseText');
+
+        // 定义一些传奇小故事
+        const legendaryStories = [
+            "巧点蚊香",
+            "不用任何工具巧辨 y 杆称",
+            "手表游丝大改革",
+            "手表表耳的创意设计",
+            "富豪钢丝球",
+            "最能以假乱真的假黄金",
+            "长寿命电烙铁头",
+            "消灭能量的办法",
+            "完美的修手表工具之 '压盖钳'",
+            "有完美不在场证明的放火方法",
+            "怎样联系客户？(30秒搞定）",
+            "长寿命手表的设计",
+            "装杯版永动机＝小花招（5法）",
+            "巧通下水道（低本高效）",
+            "招聘小情人做永动机的方法",
+            "激励自己发明永动机的经典台词",
+            "十条经典谜语（既难又巧妙）",
+            "灵数推理小题",
+            "修改一首诗歌至完美",
+            "小情人的表白台词",
+            "预言自己永动机成功的七律诗歌",
+            "用300余首好听的流行歌曲名＋古今中外经典名曲编写出一篇散文",
+            "化学元素与玄学的关系（论文）",
+            "用生辰八字＋生命灵数算命"
+        ];
+
+        // 点击按钮时随机选择一则传奇小故事进行赞美
+        praiseButton.addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * legendaryStories.length);
+            const selectedStory = legendaryStories[randomIndex];
+            praiseText.textContent = `何老师的作品《${selectedStory}》真是令人惊叹！`;
+            praiseText.style.display = 'block';
+        });
     </script>
 </body>
 </html>
